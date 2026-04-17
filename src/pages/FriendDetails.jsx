@@ -67,7 +67,7 @@ const FriendDetails = () => {
       <Navbar />
       <Toaster position="top-right" reverseOrder={false} />
       
-      <main className="flex-grow max-w-6xl mx-auto w-full px-6 py-10">
+      <main className="grow max-w-6xl mx-auto w-full px-6 py-10">
         <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-slate-400 hover:text-emerald-600 transition-all mb-8 font-semibold group">
           <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
           Back to Dashboard

@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Phone, MessageSquare, Video, Users, ChevronDown, Clock } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const Timeline = () => {
-  const [activities, setActivities] = useState([]);
-  const [filter, setFilter] = useState('All'); 
-  const [showDropdown, setShowDropdown] = useState(false); 
-
-  useEffect(() => {
+  const [activities] = useState(() => {
     const savedData = JSON.parse(localStorage.getItem('global_timeline')) || [];
-    setActivities(savedData);
-  }, []);
+    return savedData;
+  });
+  const [filter, setFilter] = useState('All'); 
+  const [showDropdown, setShowDropdown] = useState(false);
 
 
   const filteredActivities = filter === 'All' 
@@ -32,7 +30,7 @@ const Timeline = () => {
     <div className="min-h-screen bg-[#f8fafc] flex flex-col font-sans">
       <Navbar />
       
-      <main className="flex-grow max-w-4xl mx-auto w-full px-6 py-12">
+      <main className="grow max-w-4xl mx-auto w-full px-6 py-12">
         <h1 className="text-4xl font-black text-[#1a2e2a] mb-8">Timeline</h1>
 
       

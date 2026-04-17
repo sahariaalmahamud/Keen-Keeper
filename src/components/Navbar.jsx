@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Home, Clock, BarChart3, Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom'; 
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,29 +15,26 @@ const Navbar = () => {
     <nav className=" border-b border-gray-100 shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          
-          <div className="shrink-0">
-        
-            <Link to="/" className="text-2xl font-bold tracking-tight">
-              <span className="text-slate-900">Keen</span>
-              <span className="text-[#244D3F]"> Keeper</span>
-            </Link>
-          </div>
+
+          <Link to="/" className="inline-flex items-center">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+              Keen<span className="text-[#244D3F]">Keeper</span>
+            </h1>
+          </Link>
 
           <div className="hidden md:flex items-center gap-4">
             {menuItems.map((item) => {
-          
+
               const isActive = location.pathname === item.path;
-              
+
               return (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all font-bold text-sm ${
-                    isActive
-                      ? 'bg-[#244D3F] text-white shadow-md' 
-                      : 'text-slate-500 hover:text-[#244D3F] hover:bg-emerald-50'
-                  }`}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all font-bold text-sm ${isActive
+                    ? 'bg-[#244D3F] text-white shadow-md'
+                    : 'text-slate-500 hover:text-[#244D3F] hover:bg-emerald-50'
+                    }`}
                 >
                   {item.icon}
                   <span>{item.name}</span>
@@ -62,11 +59,10 @@ const Navbar = () => {
                 key={item.name}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 w-full px-4 py-3 rounded-md font-bold transition-all ${
-                  isActive
-                    ? 'bg-emerald-800 text-white'
-                    : 'text-slate-600 hover:bg-emerald-50'
-                }`}
+                className={`flex items-center gap-3 w-full px-4 py-3 rounded-md font-bold transition-all ${isActive
+                  ? 'bg-emerald-800 text-white'
+                  : 'text-slate-600 hover:bg-emerald-50'
+                  }`}
               >
                 {item.icon}
                 <span>{item.name}</span>

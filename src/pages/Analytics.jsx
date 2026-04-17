@@ -1,0 +1,99 @@
+import React, { useState } from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
+const Analytics = () => {
+  const [chartData] = useState(() => {
+    const savedData = JSON.parse(localStorage.getItem('global_timeline')) || [];
+    const counts = savedData.reduce((acc, curr) => {
+      acc[curr.type] = (acc[curr.type] || 0) + 1;
+      return acc;
+    }, {});
+
+    return Object.keys(counts).map(key => ({
+      name: key,
+      value: counts[key]
+    }));
+  });
+
+  
+  const COLORS = {
+    'Call': '#1a4731',   
+    'Text': '#7c3aed',   
+    'Video': '#10b981',  
+  };
+
+  return (
+    <div className="min-h-screen bg-[#f8fafc] flex flex-col font-sans">
+      <Navbar />
+      
+      <main className="grow max-w-5xl mx-auto w-full px-6 py-12">
+   
+        <h1 className="text-4xl font-black text-[#1a2e2a] mb-12 tracking-tight">
+          Friendship Analytics
+        </h1>
+        
+        <div className="bg-white p-10 rounded-2xl border-none shadow-sm min-h-125 flex flex-col">
+          <h3 className="text-[#244D3F] font-bold text-sm uppercase tracking-[0.2em] mb-8">
+            By Interaction Type
+          </h3>
+          
+          <div className="grow flex items-center justify-center">
+            {chartData.length > 0 ? (
+              <div className="w-full h-87.5">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
+                    <Pie
+                      data={chartData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={80}  
+                      outerRadius={110}
+                      paddingAngle={8}   
+                      dataKey="value"
+                      stroke="none"    
+                    >
+                      {chartData.map((entry, index) => (
+                        <Cell 
+                          key={`cell-${index}`} 
+                          fill={COLORS[entry.name] || '#cbd5e1'} 
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                    />
+                    <Legend 
+                      verticalAlign="bottom" 
+                      height={36}
+                      iconType="circle"
+                      formatter={(value) => (
+                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-2">
+                          {value}
+                        </span>
+                      )}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+            ) : (
+              <div className="text-center py-20 bg-slate-50 rounded-2xl border border-dashed border-slate-200 w-full">
+                <p className="text-slate-400 font-bold italic tracking-wide">
+                  No interaction data recorded yet. <br />
+                  <span className="text-xs font-medium not-italic">Go to a profile and log a Call, Text, or Video.</span>
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Analytics;
+
+
