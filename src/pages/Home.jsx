@@ -4,7 +4,6 @@ import Herosection from '../components/Herosection';
 import FriendCard from '../components/FriendCard';
 import Footer from '../components/Footer';
 import Overview from '../components/Overview';
-import { Outlet } from 'react-router-dom';
 
 
 const SearchIcon = ({ size = 20 }) => (
@@ -134,7 +133,6 @@ const Home = () => {
           </div>
         </div>
       </main>
-      <Outlet />
       <Footer />
     </div>
   );

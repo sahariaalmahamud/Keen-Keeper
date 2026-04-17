@@ -10,12 +10,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="friend/:id" element={<FriendDetails />} />
-          <Route path="timeline" element={<Timeline />} />
-          <Route path="stats" element={<Stats />} />
-        </Route>
-
+        <Route path="/" element={<Home />} />
+        <Route path="/friend/:id" element={<FriendDetails />} />
+        <Route path="/timeline" element={<Timeline />} />
+        <Route path="/stats" element={<Stats />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
