@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const Analytics = () => {
-  const [chartData] = useState(() => {
-    const savedData = JSON.parse(localStorage.getItem('global_timeline')) || [];
-    const counts = savedData.reduce((acc, curr) => {
-      acc[curr.type] = (acc[curr.type] || 0) + 1;
-      return acc;
-    }, {});
+  const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    return Object.keys(counts).map(key => ({
-      name: key,
-      value: counts[key]
-    }));
-  });
+  useEffect(() => {
+    // Simulate loading for better UX
+    const timer = setTimeout(() => {
+      const savedData = JSON.parse(localStorage.getItem('global_timeline')) || [];
+      const counts = savedData.reduce((acc, curr) => {
+        acc[curr.type] = (acc[curr.type] || 0) + 1;
+        return acc;
+      }, {});
+
+      const formattedData = Object.keys(counts).map(key => ({
+        name: key,
+        value: counts[key]
+      }));
+
+      setChartData(formattedData);
+      setLoading(false);
+    }, 300); // Brief loading delay for smooth UX
+
+    return () => clearTimeout(timer);
+  }, []);
 
   
   const COLORS = {
@@ -34,25 +45,30 @@ const Analytics = () => {
           Friendship Analytics
         </h1>
         
-        <div className="bg-white p-10 rounded-2xl border-none shadow-sm min-h-125 flex flex-col">
-          <h3 className="text-[#244D3F] font-bold text-sm uppercase tracking-[0.2em] mb-8">
+        <div className="bg-white p-6 md:p-10 rounded-2xl border-none shadow-sm min-h-112.5 flex flex-col">
+          <h3 className="text-slate-400 font-bold text-sm uppercase tracking-[0.2em] mb-8">
             By Interaction Type
           </h3>
           
           <div className="grow flex items-center justify-center">
-            {chartData.length > 0 ? (
-              <div className="w-full h-87.5">
+            {loading ? (
+              <div className="flex flex-col justify-center items-center py-32 transition-opacity duration-500 opacity-100">
+                <div className="animate-spin rounded-full h-14 w-14 border-t-4 border-b-4 border-emerald-800 border-t-emerald-800/10 border-b-emerald-800/10 border-l-emerald-800"></div>
+                <p className="mt-6 text-slate-400 font-bold animate-pulse tracking-wide text-sm">Analyzing your interactions...</p>
+              </div>
+            ) : chartData.length > 0 ? (
+              <div className="w-full h-87.5 md:h-105 lg:h-117.5">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                     <Pie
                       data={chartData}
                       cx="50%"
                       cy="50%"
-                      innerRadius={80}  
-                      outerRadius={110}
-                      paddingAngle={8}   
+                      innerRadius="40%"
+                      outerRadius="60%"
+                      paddingAngle={4}
                       dataKey="value"
-                      stroke="none"    
+                      stroke="none"
                     >
                       {chartData.map((entry, index) => (
                         <Cell 

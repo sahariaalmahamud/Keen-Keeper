@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         
    
-        <h2 className="text-5xl font-extrabold mb-6 tracking-tight">KeenKeeper</h2>
+        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">KeenKeeper</h2>
         
     
         <p className="text-emerald-100/70 text-center max-w-2xl text-sm md:text-base mb-10 leading-relaxed">

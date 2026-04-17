@@ -75,7 +75,7 @@ const FriendDetails = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-3 space-y-4">
-            <div className="bg-white rounded-xl p-8 border border-slate-100 shadow-sm text-center">
+            <div className="bg-white rounded-xl p-6 md:p-8 border border-slate-100 shadow-sm text-center">
               <img src={friend.picture} className="w-20 h-20 rounded-full mx-auto object-cover mb-4 border-2 border-slate-50 shadow-sm" alt="" />
               <h1 className="text-xl font-extrabold text-slate-800">{friend.name}</h1>
               <div className="mt-3 flex flex-col gap-2">
@@ -83,6 +83,7 @@ const FriendDetails = () => {
                 <span className="bg-[#e2f3ef] text-[#1a2e2a] text-[10px] font-black px-3 py-1 rounded-full mx-auto uppercase">{friend.tags[0]}</span>
               </div>
               <p className="text-slate-500 italic text-sm mt-5">"{friend.bio}"</p>
+              <p className="text-slate-500 italic text-sm mt-5">"{friend.email}"</p>
             </div>
 
             <div className="bg-white rounded-xl border border-slate-100 overflow-hidden divide-y divide-slate-50 shadow-sm">
@@ -94,15 +95,15 @@ const FriendDetails = () => {
 
           <div className="lg:col-span-9 space-y-6">
             <div className="grid grid-cols-3 gap-4">
-              <div className="bg-white md:p-7 rounded-xl border border-slate-100 shadow-sm text-center">
+              <div className="bg-white md:p-7 p-4 rounded-xl border border-slate-100 shadow-sm text-center">
                 <p className="text-4xl font-black text-slate-700">{friend.days_since_contact}</p>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Days Since Contact</p>
               </div>
-              <div className="bg-white md:p-7 rounded-xl border border-slate-100 shadow-sm text-center">
+              <div className="bg-white md:p-7 p-4 rounded-xl border border-slate-100 shadow-sm text-center">
                 <p className="text-4xl font-black text-slate-700">{friend.goal}</p>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Goal (Days)</p>
               </div>
-              <div className="bg-white md:p-7 rounded-xl border border-slate-100 shadow-sm text-center">
+              <div className="bg-white md:p-7 p-4 rounded-xl border border-slate-100 shadow-sm text-center">
                 <p className="text-xl font-black text-[#1a4731]">{friend.next_due_date}</p>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-4">Next Due</p>
               </div>
@@ -111,15 +112,15 @@ const FriendDetails = () => {
             <div className="bg-white p-7 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="text-slate-800 font-extrabold mb-6 uppercase text-sm tracking-widest">Quick Check-In</h3>
               <div className="grid grid-cols-3 gap-4">
-                <button onClick={() => handleCheckIn('Call')} className="flex flex-col items-center justify-center p-8 bg-[#f8fafc] rounded-2xl hover:bg-emerald-100 hover:text-emerald-700 transition-all border border-transparent hover:border-emerald-200 group">
+                <button onClick={() => handleCheckIn('Call')} className="flex flex-col items-center justify-center p-6 md:p-8 bg-[#f8fafc] rounded-2xl hover:bg-emerald-100 hover:text-emerald-700 transition-all border border-transparent hover:border-emerald-200 group cursor-pointer">
                   <Phone size={24} className="text-slate-700 group-hover:text-emerald-600 mb-2" />
                   <span className="text-xs font-black uppercase group-hover:text-emerald-600 text-slate-700">Call</span>
                 </button>
-                <button onClick={() => handleCheckIn('Text')} className="flex flex-col items-center justify-center p-8 bg-[#f8fafc] rounded-2xl hover:bg-emerald-100 hover:text-emerald-700 transition-all border border-transparent hover:border-emerald-200 group">
+                <button onClick={() => handleCheckIn('Text')} className="flex flex-col items-center justify-center p-6 md:p-8 bg-[#f8fafc] rounded-2xl hover:bg-emerald-100 hover:text-emerald-700 transition-all border border-transparent hover:border-emerald-200 group cursor-pointer">
                   <MessageSquare size={24} className="text-slate-700 group-hover:text-emerald-600 mb-2" />
                   <span className="text-xs font-black uppercase group-hover:text-emerald-600 text-slate-700">Text</span>
                 </button>
-                <button onClick={() => handleCheckIn('Video')} className="flex flex-col items-center justify-center p-8 bg-[#f8fafc] rounded-2xl hover:bg-emerald-100 hover:text-emerald-700 transition-all border border-transparent hover:border-emerald-200 group">
+                <button onClick={() => handleCheckIn('Video')} className="flex flex-col items-center justify-center p-6 md:p-8 bg-[#f8fafc] rounded-2xl hover:bg-emerald-100 hover:text-emerald-700 transition-all border border-transparent hover:border-emerald-200 group cursor-pointer">
                   <Video size={24} className="text-slate-700 group-hover:text-emerald-600 mb-2" />
                   <span className="text-xs font-black uppercase group-hover:text-emerald-600 text-slate-700">Video</span>
                 </button>

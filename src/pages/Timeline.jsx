@@ -34,7 +34,7 @@ const Timeline = () => {
         <h1 className="text-4xl font-black text-[#1a2e2a] mb-8">Timeline</h1>
 
       
-        <div className="relative mb-8 w-64">
+        <div className="relative mb-8 w-full sm:w-64">
           <button 
             onClick={() => setShowDropdown(!showDropdown)}
             className="w-full flex items-center justify-between px-4 py-2 bg-white border border-slate-100 rounded-xl shadow-sm text-slate-400 text-sm font-bold uppercase tracking-widest hover:border-slate-300 transition-all"
@@ -67,7 +67,7 @@ const Timeline = () => {
             filteredActivities.map((item) => {
               const theme = getTheme(item.type);
               return (
-                <div key={item.id} className="group bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex items-center gap-6 hover:shadow-md transition-all">
+                <div key={item.id} className="group bg-white p-4 md:p-5 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 md:gap-6 hover:shadow-md transition-all">
                   <div className={`p-3 rounded-xl ${theme.bg} ${theme.color} group-hover:scale-110 transition-transform`}>
                     {theme.icon}
                   </div>

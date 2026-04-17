@@ -33,7 +33,7 @@ const Overview = ({ statsData }) => {
             className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center transition-all hover:shadow-md hover:border-emerald-100 group"
           >
        
-            <h3 className="text-5xl font-black text-[#1a2e2a] mb-2 group-hover:scale-110 transition-transform">
+            <h3 className="text-3xl md:text-5xl font-black text-[#1a2e2a] mb-2 group-hover:scale-110 transition-transform">
               {card.value}
             </h3>
             
