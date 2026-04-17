@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, Clock, BarChart3, Menu, X } from 'lucide-react';
+import { Home, Clock, Menu, X, ChartLine } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
@@ -8,7 +8,7 @@ const Navbar = () => {
   const menuItems = [
     { name: 'Home', icon: <Home size={18} />, path: '/' },
     { name: 'Timeline', icon: <Clock size={18} />, path: '/timeline' },
-    { name: 'Stats', icon: <BarChart3 size={18} />, path: '/stats' },
+    { name: 'Stats', icon: <ChartLine size={18} />, path: '/stats' },
   ];
 
   return (
